@@ -1,9 +1,26 @@
-// // ---simple example🛑
+// // ----------useSelector🛑useDispatch🛑----------
+// import React from "react";
+// import { useSelector, useDispatch,} from "react-redux";
+
+// function App(){
+//     const count = useSelector((state)=>state.count)
+//     const dispatch=useDispatch();
+
+//     return(
+//         <div style={{textAlign:"center", marginTop:"20px"}}>
+//           <h1>count: {count}</h1> 
+//           <button onClick={()=>dispatch({type:"INCREMENT"})}>➕</button> 
+//           <button onClick={()=>dispatch({type:"DECREMENT"})}>➖</button>
+//         </div>
+//     )
+// }
+// export default App;
+
+//// ---simple example🛑
 // import store from "./store"
 // import React, {useEffect} from "react"
 // import { act } from "react"
 // import { combineReducers } from "redux";
-
 
 // function App(){
 //   useEffect(()=>{
@@ -12,7 +29,7 @@
 //     });
 //     store.dispatch({type:"INCREMENT"});
 //     store.dispatch({type:"INCREMENT"});
-//     store.dispatch({type: "DECREMENT"})
+//     store.dispatch({type: "DECREMENT"});
 
 //     return unsubscribe;
 //   },[])
@@ -47,7 +64,7 @@
 // export default counterReducer;
 
 
-// // ----------todo🛑
+// // // ----------todo🛑
 // import React, {useState} from "react";
 // import {useSelector,useDispatch} from "react-redux"
 
@@ -184,3 +201,62 @@
 //   )
 // }
 // export default App;
+
+// --------async🟡thunk🛑
+import React, {useEffect} from "react";
+import {useSelector,useDispatch,} from "react-redux"
+import {fetchData} from "./action";
+
+function App(){
+  const dispatch = useDispatch();
+  const {loading, data, error}=useSelector((state)=>state.thunk);
+
+  useEffect(()=>{
+    dispatch(fetchData());
+  },[dispatch]);
+
+  return (
+    <div style={{marginLeft:"15px"}}>
+      <h1>async example</h1>
+      {loading && <h2>loading...</h2>}
+      {error && <h3>error: {error.message}</h3>}
+      {data && (
+        <div>
+          <h4>fetched post</h4>
+          <pre>{JSON.stringify(data,null,2)}</pre> 
+          </div>
+      )}
+   </div>
+  );
+}
+export default App;
+
+// --------connect reducers🛑
+// import React from "react";
+// import {useSelector,useDispatch} from "react-redux";
+
+// function App(){
+//   const user= useSelector((state)=>state);
+//   const dispatch = useDispatch();
+
+//   const setUser = ()=>{
+//     dispatch ({
+//       type:"SET_USER",
+//       payload:{name:"wafa", email:"wafa@gmail.com"},
+//     });
+//   };
+//   const clearUser =()=>{
+//     dispatch ({type:"CLEAR_USER"});
+//   };
+//   return (
+//     <div style={{textAlign:"center", marginTop:"50px"}}>
+//       <h2>user info</h2>
+//       <p>name:{user.name}</p>
+//       <p>email:{user.email}</p>
+//       <button onClick={setUser}>Set user</button>
+//       <button onClick={clearUser}>Clear user</button>
+//     </div>
+//   )
+// }
+// export default App;
+

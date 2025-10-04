@@ -1,5 +1,8 @@
-// import {composeWithDevTools} from "redux-devtools-extension";
-
+// // ----------useSelector🛑useDispatch🛑----------
+// import {createStore} from "redux"
+// import counterReducer from "./counterReducer"
+// const store= createStore(counterReducer)
+// export default store;
 
 // // ---simple example🛑
 // import { createStore }from "redux";
@@ -66,10 +69,10 @@
 // export default store;
 
 // // --------- multireducer🛑
-
+// import {composeWithDevTools} from "redux-devtools-extension";
 // import {createStore, combineReducers} from "redux";
 // import counterReducer from "./counterReducer";
-// import todoReducer from "./todoReducer";
+// import todoReducer from "./reducers/todoReducer";
 
 // const rootReducer=combineReducers({
 //     counter: counterReducer,
@@ -78,13 +81,33 @@
 // const store = createStore(rootReducer,composeWithDevTools());
 // export default store;
 
-// -------middleware🛑
+// // -------middleware🛑
 // import {createStore, applyMiddleware} from "redux";
-// import rootReducer from "./reducers";
+// // import rootReducer from "./reducers";
 // import Logger from "./middleware/Logger";
-
+// import counterReducer from "./counterReducer";
 // const store = createStore(
-//     rootReducer,
+//     counterReducer,
 //     applyMiddleware(Logger)
 // );
 // export default store;
+
+// // ----------async🟡thunk🛑
+import {createStore, applyMiddleware} from "redux";
+import {thunk} from "redux-thunk";
+import rootReducer from "./reducers"
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+export default store;
+
+// // --------connect reduce🛑
+// import {createStore} from "redux";
+// import { userReducer } from "./reducers/userReducer";
+
+// export const store= createStore(
+//     userReducer
+
+// );
+// export default store;
+
+

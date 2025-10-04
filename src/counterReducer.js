@@ -1,3 +1,4 @@
+const initialState={count:0}
 function counterReducer(state={count:0},action){
     switch (action.type){
         case "INCREMENT":
