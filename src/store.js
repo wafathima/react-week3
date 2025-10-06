@@ -4,7 +4,7 @@
 // const store= createStore(counterReducer)
 // export default store;
 
-// // ---simple example🛑
+// ---simple example🛑
 // import { createStore }from "redux";
 // function counterReducer (state={count:0},action){
 // switch (action.type){
@@ -93,12 +93,12 @@
 // export default store;
 
 // // ----------async🟡thunk🛑
-import {createStore, applyMiddleware} from "redux";
-import {thunk} from "redux-thunk";
-import rootReducer from "./reducers"
+// import {createStore, applyMiddleware} from "redux";
+// import {thunk} from "redux-thunk";
+// import rootReducer from "./reducers"
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-export default store;
+// const store = createStore(rootReducer, applyMiddleware(thunk));
+// export default store;
 
 // // --------connect reduce🛑
 // import {createStore} from "redux";
@@ -110,4 +110,50 @@ export default store;
 // );
 // export default store;
 
+// ---------selector🟡
 
+// import {configureStore} from "@reduxjs/toolkit";
+// import classReducer from "./slice/classSlice";
+
+// const store = configureStore({
+//     reducer: {
+//         classes : classReducer
+//     },
+// });
+// export default store;
+
+// ---------redux toolkit counter🟡
+//  import { configureStore } from "@reduxjs/toolkit";
+//  import counterReducer from "./slice/counterSlice";
+
+//  const store = configureStore({
+//     reducer :{
+//         counter : counterReducer
+//     },
+//  });
+// export default store;
+
+
+// -------selector,reselector🟡
+
+// import { configureStore } from "@reduxjs/toolkit";
+// import todosReducer from "./slice/todosSlice"
+
+// const store = configureStore({
+//     reducer :{
+//         todos: todosReducer,
+//     },
+// });
+// export default store;
+
+
+// --------project🔴🟡🟢
+// import { configureStore } from "@reduxjs/toolkit";
+// import todoReducer from "./slice/todosSlice"
+
+// export const store = configureStore({
+//     reducer:{
+//         todo:todoReducer,
+//     }
+// });
+// export default store;
